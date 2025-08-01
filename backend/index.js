@@ -34,6 +34,10 @@ app.use(methodOverride("_method"));
 // Cho phép CORS
 app.use(cors());
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });
