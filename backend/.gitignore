@@ -1,0 +1,52 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Logs
+logs
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Optional npm cache directory
+.npm
+
+# VSCode settings (optional, nếu dùng VSCode)
+.vscode/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dist folder for Vue build
+dist/
+
+# Vue.js specific
+*.local
+*.cache
+*.bak
+*.tmp
+*.swp
+
+# Lint cache
+.eslintcache
+
+# Build artifacts
+/build
+/public/js/*.js
+/public/css/*.css
+
+# IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
