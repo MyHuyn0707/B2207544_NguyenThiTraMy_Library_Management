@@ -4,6 +4,12 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
+const moment = require("moment");
+
+const clientRoute = require("./routes/client/index.route");
+const adminRoute = require("./routes/admin/index.route");
+const systemPrefix = require("./config/system");
 
 require("dotenv").config();
 
@@ -38,12 +44,29 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
-});
+// Flash
+// app.use(cookieParser("KWJFKWEIFHW"));
+// app.use(session({ cookie: { maxAge: 60000 } }));
+// app.use(flash());
+// End Flash
+
+// TinyMCE
+app.use(
+    "/tinymce",
+    express.static(path.join(__dirname, "node_modules", "tinymce"))
+);
+// End TinyMCE
+
+// Variables
+app.locals.adminPrefix = systemPrefix.adminPrefix;
+app.locals.moment = moment;
+
+// Routes
+clientRoute(app);
+adminRoute(app);
 
 app.get("/", (req, res) => {
-    res.json({ message: "Server hoạt động tốt!" });
+    res.send("Backend đang chạy!");
 });
 
 app.listen(port, () => {
