@@ -46,16 +46,16 @@ const adminRoutes = [
         component: () => import("@/views/admin/pages/infor/Infor.vue"),
         beforeEnter: requireAdminAuth,
     },
-    //   {
-    //     path: "/admin/*", // Sửa lại định tuyến này để bắt đầu bằng "/"
-    //     name: "notfound",
-    //     component: () => import("@/views/admin/pages/books/NotFound.vue"),
-    //   },
-    // {
-    //   path: "/:catchAll(.*)", // Bắt tất cả các đường dẫn không hợp lệ
-    //   name: "notfound",
-    //   component: () => import("@/views/admin/pages/books/NotFound.vue"),
-    // },
+    {
+        path: "/admin/*", // Sửa lại định tuyến này để bắt đầu bằng "/"
+        name: "notfound",
+        component: () => import("@/views/admin/pages/books/NotFound.vue"),
+    },
+    {
+        path: "/:catchAll(.*)", // Bắt tất cả các đường dẫn không hợp lệ
+        name: "notfound",
+        component: () => import("@/views/admin/pages/books/NotFound.vue"),
+    },
     {
         path: "/admin/auth/register",
         name: "register",
