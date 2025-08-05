@@ -39,6 +39,13 @@ app.use(methodOverride("_method"));
 
 // Cho phép CORS
 app.use(cors());
+// const corsOptions = {
+//     origin: "*", // Hoặc domain frontend bạn cho phép
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true, // Cho phép gửi cookie
+// };
+
+// app.use(cors(corsOptions));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

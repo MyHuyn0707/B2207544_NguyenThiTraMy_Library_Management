@@ -20,7 +20,12 @@ module.exports.loginPost = async (req, res, next) => {
             return;
         }
 
-        if (enteredPassword != user.password) {
+        const isPasswordMatch = await bcrypt.compare(
+            enteredPassword,
+            user.password
+        );
+
+        if (!isPasswordMatch) {
             res.json("wrong info");
             return;
         }

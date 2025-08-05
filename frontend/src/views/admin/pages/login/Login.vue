@@ -50,9 +50,11 @@ export default {
     methods: {
         async login() {
             try {
+                console.log(this.formData);
                 const response = await AuthorizationServiceAdmin.submitLogin(
                     this.formData
                 );
+                console.log(response);
                 switch (response.data) {
                     case "wrong info":
                         // Đăng nhập không thành công
