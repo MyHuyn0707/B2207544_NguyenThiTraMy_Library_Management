@@ -1,12 +1,15 @@
 const bcrypt = require("bcrypt");
 const Reader = require("../../models/reader.model");
+const ApiError = require("../../helpers/api-error");
+const ReaderService = require("./../../services/reader.service");
+
 // [POST] /auth/login
 module.exports.loginPost = async (req, res, next) => {
     try {
         const enteredEmail = req.body.email;
         const enteredPassword = req.body.password;
 
-        const user = await Reader.findOne({ email: enteredEmail });
+        const user = await ReaderService.getReaderByEmail(enteredEmail);
 
         if (!user) {
             res.json("wrong info");
@@ -18,7 +21,12 @@ module.exports.loginPost = async (req, res, next) => {
             return;
         }
 
-        if (enteredPassword != user.password) {
+        const isPasswordMatch = await bcrypt.compare(
+            enteredPassword,
+            user.password
+        );
+
+        if (!isPasswordMatch) {
             res.json("wrong info");
             return;
         }

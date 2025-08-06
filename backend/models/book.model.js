@@ -2,30 +2,37 @@ const mongoose = require("mongoose");
 const slug = require("mongoose-slug-updater");
 mongoose.plugin(slug);
 
-const bookSchema = new mongoose.Schema(
+const sachSchema = new mongoose.Schema(
     {
-        bookTitle: String,
-        price: Number,
-        quantity: Number,
-        publishYear: String,
-        publisherName: String,
-        publisherAddress: String,
-        author: String,
-        thumbnail: String,
+        maSach: {
+            type: Number,
+            unique: true,
+            required: true,
+        },
+        tenSach: String,
+        tacGia: String,
+        namXuatBan: String,
+        maNXB: {
+            type: Number,
+            required: true,
+            ref: "NhaXuatBan",
+        },
+        gia: Number,
+        soLuong: Number,
+        anhBia: String,
         slug: {
             type: String,
-            slug: "bookTitle",
+            slug: "tenSach",
             unique: true,
         },
-        deleted: {
+        daXoa: {
             type: Boolean,
             default: false,
         },
-        deletedAt: Date,
+        ngayXoa: Date,
     },
     { timestamps: true }
 );
 
-const Book = mongoose.model("Book", bookSchema, "books");
-
-module.exports = Book;
+const Sach = mongoose.model("Sach", sachSchema, "Sach");
+module.exports = Sach;

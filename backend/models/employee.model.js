@@ -2,23 +2,40 @@ const mongoose = require("mongoose");
 const slug = require("mongoose-slug-updater");
 mongoose.plugin(slug);
 
-const employeeSchema = new mongoose.Schema(
+const nhanVienSchema = new mongoose.Schema(
     {
-        fullName: String,
-        email: String,
-        password: String,
-        token: String,
-        address: String,
-        phone: String,
-        deleted: {
+        maNV: {
+            type: Number,
+            unique: true,
+            required: true,
+        },
+        hoTen: String,
+        ngaySinh: Date,
+        chucVu: String,
+        diaChi: String,
+        soDienThoai: String,
+        email: {
+            type: String,
+            unique: true,
+            required: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        token: {
+            type: String,
+            default: null,
+        },
+        daXoa: {
             type: Boolean,
             default: false,
         },
-        deletedAt: Date,
+        ngayXoa: Date,
     },
     { timestamps: true }
 );
 
-const Employee = mongoose.model("Employee", employeeSchema, "employees");
+const NhanVien = mongoose.model("NhanVien", nhanVienSchema, "NhanVien");
 
-module.exports = Employee;
+module.exports = NhanVien;

@@ -1,16 +1,19 @@
 const Book = require("../../models/book.model");
+const NhaXuatBan = require("../../models/publisher.model");
 const ApiError = require("../../helpers/api-error");
 const asyncHandler = require("express-async-handler");
 const fs = require("fs");
 const upload = require("../../middlewares/admin/upload");
 const path = require("path");
 const fsx = require("fs-extra");
+const BookService = require("./../../services/book.service");
 
+// [POST] /admin/books
 const createBook = async (req, res) => {
     try {
-        const book = await Book.create({
+        const book = await BookService.createBook({
             ...req.body,
-            thumbnail: req.file ? req.file.filename : null,
+            anhBia: req.file ? req.file.filename : null,
         });
         res.status(200).json({ message: "Book added successfully", book });
     } catch (error) {
@@ -18,22 +21,25 @@ const createBook = async (req, res) => {
     }
 };
 
+// [GET] /admin/books
 const getAll = async (req, res) => {
     try {
-        const book = await Book.find({});
-        res.status(200).json(book);
+        const books = await BookService.getAllBooks();
+        res.status(200).json(books);
     } catch (error) {
         res.status(500);
         throw new Error(error.message);
     }
 };
 
+// [GET] /admin/books/:maSach
 const getOne = async (req, res) => {
     try {
-        const book = await Book.findById(req.params.id);
+        const book = await BookService.getBookByMaSach(req.params.maSach);
+
         if (!book) {
             res.status(404).json({
-                message: `Can not find book with ID: ${req.params.id}`,
+                message: `Can not find book with maSach: ${req.params.maSach}`,
             });
         }
         res.status(200).json(book);
@@ -43,19 +49,19 @@ const getOne = async (req, res) => {
     }
 };
 
+// [PUT] /admin/books/:maSach
 const updateOne = async (req, res) => {
     try {
-        const bookId = req.params.id;
-        const existingBook = await Book.findById(bookId);
-
+        const maSach = req.params.maSach;
+        const existingBook = await BookService.getBookByMaSach(maSach);
         if (!existingBook) {
             return res
                 .status(404)
-                .json({ message: `Cannot find book with ID: ${bookId}` });
+                .json({ message: `Cannot find book with maSach: ${maSach}` });
         }
 
         // Check if a new image file is uploaded
-        if (req.file) {
+        /*  if (req.file) {
             // Remove the old image file
             if (existingBook.thumbnail) {
                 const imagePath = path.join(
@@ -76,16 +82,17 @@ const updateOne = async (req, res) => {
                     }
                 });
             }
-        }
+        } */
 
-        const data = {
-            ...req.body,
-            thumbnail: req.file ? req.file.filename : existingBook.thumbnail,
-        };
-        const book = await Book.findByIdAndUpdate(bookId, data, { new: true });
-        if (!book) {
+        // const book = await Book.findByIdAndUpdate(bookId, data, { new: true });
+
+        const updateResult = await BookService.updateBook(
+            existingBook.maSach,
+            req.body
+        );
+        if (updateResult.modifiedCount === 0) {
             res.status(404).json({
-                message: `Can not find book with ID: ${req.params.id}`,
+                message: `Can not update book with maSach: ${req.params.maSach}`,
             });
         }
         res.status(200).json({ message: "Book was updated" });
@@ -95,6 +102,7 @@ const updateOne = async (req, res) => {
     }
 };
 
+// [DELETE] /admin/book/:id
 const deleteOne = async (req, res) => {
     try {
         const book = await Book.findByIdAndDelete(req.params.id, req.body);
@@ -130,6 +138,7 @@ const deleteOne = async (req, res) => {
     }
 };
 
+// [DELETE] /admin/book
 const deleteAll = async (req, res) => {
     try {
         const result = await Book.deleteMany({});

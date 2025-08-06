@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
-const Account = require("../../models/employee.model");
+const Employee = require("../../models/employee.model");
 const ApiError = require("../../helpers/api-error");
+const EmployeeService = require("../../services/Employee.service");
 
 // [POST] /admin/auth/login
 module.exports.loginPost = async (req, res, next) => {
@@ -8,7 +9,7 @@ module.exports.loginPost = async (req, res, next) => {
         const enteredEmail = req.body.email;
         const enteredPassword = req.body.password;
 
-        const user = await Account.findOne({ email: enteredEmail });
+        const user = await EmployeeService.getEmployeeByEmail(enteredEmail);
 
         if (!user) {
             res.json("wrong info");

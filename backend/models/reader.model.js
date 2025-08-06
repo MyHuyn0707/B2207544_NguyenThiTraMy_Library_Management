@@ -2,39 +2,41 @@ const mongoose = require("mongoose");
 const slug = require("mongoose-slug-updater");
 mongoose.plugin(slug);
 
-const readerSchema = new mongoose.Schema(
+const docGiaSchema = new mongoose.Schema(
     {
-        fullName: String,
-        email: String,
-        password: String,
-        token: String,
-        address: String,
-        phone: String,
-        borrow: [
-            {
-                id_book: String,
-                status: {
-                    type: String,
-                    default: "processing", //processing accepted refused returned
-                },
-                borrowDate: String,
-                returnDate: String,
-                quantity: {
-                    type: Number,
-                    default: 1,
-                    require: true,
-                },
-            },
-        ],
-        deleted: {
+        maDocGia: {
+            type: Number,
+            unique: true,
+            required: true,
+        },
+        hoTen: String,
+        ngaySinh: Date,
+        gioiTinh: Boolean, // 0: Nữ, 1: Nam
+        diaChi: String,
+        dienThoai: String,
+        // Thêm các trường liên quan đến đăng nhập
+        email: {
+            type: String,
+            unique: true,
+            required: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        token: {
+            type: String,
+            default: null,
+        },
+
+        daXoa: {
             type: Boolean,
             default: false,
         },
-        deletedAt: Date,
+        ngayXoa: Date,
     },
     { timestamps: true }
 );
 
-const Reader = mongoose.model("Reader", readerSchema, "readers");
-
-module.exports = Reader;
+const DocGia = mongoose.model("DocGia", docGiaSchema, "DocGia");
+module.exports = DocGia;
