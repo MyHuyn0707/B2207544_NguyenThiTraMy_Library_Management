@@ -203,7 +203,7 @@
 
 .footer__bottom p {
     font-size: 14px;
-    background-color: #81c240;
+    background-color: #2b6094;
     color: #fff;
     padding: 10px;
 }
@@ -216,6 +216,6 @@
 }
 
 .footer__social a:hover {
-    color: #81c240;
+    color: #16304a;
 }
 </style>

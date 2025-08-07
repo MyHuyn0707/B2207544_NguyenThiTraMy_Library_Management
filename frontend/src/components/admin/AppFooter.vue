@@ -1,87 +1,162 @@
 <template>
-    <div>
-        <footer class="footer">
-            <div class="footer__container container">
-                <!-- Cột 1: Giới thiệu -->
-                <div class="footer__column">
-                    <h4>Giới thiệu</h4>
-                    <ul>
-                        <li><a href="#">Về SpringBook</a></li>
-                        <li><a href="#">Hệ thống nhà sách</a></li>
-                    </ul>
-                </div>
+    <footer class="footer">
+        <div class="footer__container">
+            <!-- Logo & tiêu đề -->
+            <div class="footer__column footer__brand">
+                <img
+                    src="/client/SpringBook.png"
+                    alt="SpringBook Logo"
+                    class="footer__logo"
+                />
+                <h2 class="footer__title">SPRINGBOOK BOOKSTORE</h2>
+                <img
+                    src="/client/logo-bct.webp"
+                    alt="Bộ Công Thương"
+                    class="footer__cert-logo"
+                />
+            </div>
 
-                <!-- Cột 2: Dịch vụ -->
-                <div class="footer__column">
-                    <h4>Dịch vụ</h4>
-                    <ul>
-                        <li><a href="#">Điều khoản sử dụng</a></li>
-                        <li><a href="#">Chính sách bảo mật</a></li>
-                        <li><a href="#">Chính sách thanh toán</a></li>
-                    </ul>
-                </div>
-
-                <!-- Cột 3: Hỗ trợ -->
-                <div class="footer__column">
-                    <h4>Hỗ trợ</h4>
-                    <ul>
-                        <li><a href="#">Chính sách đổi trả</a></li>
-                        <li><a href="#">Chính sách vận chuyển</a></li>
-                        <li><a href="#">Chính sách khách sĩ</a></li>
-                    </ul>
-                </div>
-
-                <!-- Cột 4: Tài khoản -->
-                <div class="footer__column">
-                    <h4>Tài khoản của tôi</h4>
-                    <ul>
-                        <li><a href="#">Đăng nhập / Đăng ký</a></li>
-                        <li><a href="#">Lịch sử mua hàng</a></li>
-                        <li><a href="#">Cập nhật thông tin</a></li>
-                    </ul>
-                </div>
-
-                <!-- Cột 5: Liên hệ -->
-                <div class="footer__column">
-                    <h4>Liên hệ</h4>
-                    <p>Trụ sở: 805 Hồng Bàng, Quận 5, TP.HCM</p>
-                    <p>Điện thoại: <a href="tel:02871086979">02871086979</a></p>
-                    <p>
-                        Email:
-                        <a href="mailto:online@springbook.vn"
-                            >online@springbook.vn</a
+            <!-- Dịch vụ -->
+            <div class="footer__column">
+                <h4>DỊCH VỤ</h4>
+                <ul>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-file-alt"></i> Điều khoản sử
+                            dụng</a
                         >
-                    </p>
-                </div>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-shield-alt"></i> Chính sách bảo
+                            mật</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-credit-card"></i> Chính sách thanh
+                            toán</a
+                        >
+                    </li>
+                </ul>
             </div>
-            <div class="footer__social text-center">
-                <a href="https://facebook.com/">Facebook</a> |
-                <a href="#">YouTube</a> |
-                <a href="#">Instagram</a>
+
+            <!-- Hỗ trợ -->
+            <div class="footer__column">
+                <h4>HỖ TRỢ</h4>
+                <ul>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-exchange-alt"></i> Chính sách đổi
+                            trả</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-truck"></i> Chính sách vận
+                            chuyển</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-users"></i> Chính sách khách sĩ</a
+                        >
+                    </li>
+                </ul>
             </div>
-            <p class="footer__copyright text-center">
-                © 2024 - Thiết kế bởi Brian Nguyen - SPRINGBOOK BOOKSTORE
-            </p>
-        </footer>
-    </div>
+
+            <!-- Tài khoản -->
+            <div class="footer__column">
+                <h4>TÀI KHOẢN</h4>
+                <ul>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-user"></i> Đăng nhập / Đăng ký</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-history"></i> Lịch sử mua hàng</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fas fa-edit"></i> Cập nhật thông tin</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Liên hệ -->
+            <div class="footer__column">
+                <h4>LIÊN HỆ</h4>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> 805 Hồng Bàng, Quận 5,
+                    TP.HCM
+                </p>
+                <p>
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:02871086979">02871086979</a>
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:online@springbook.vn"
+                        >online@springbook.vn</a
+                    >
+                </p>
+            </div>
+        </div>
+
+        <!-- Dòng cuối -->
+        <div class="footer__bottom">
+            <p>© 2024 - Thiết kế bởi Bao - Quản lý bởi SPRINGBOOK BOOKSTORE</p>
+        </div>
+    </footer>
 </template>
+
 <style scoped>
-.footer__container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+.footer {
+    background-color: #fff;
+    color: #333;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+    padding: 40px 20px;
+    border-top: 1px solid #ddd;
 }
 
-.footer__column {
-    flex: 1 1 200px;
-    min-width: 180px;
+.footer__container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer__brand {
+    text-align: center;
+}
+
+.footer__logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.footer__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #2c3e50;
+}
+
+.footer__cert-logo {
+    width: 150px;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 
 .footer__column h4 {
     font-size: 16px;
-    margin-bottom: 10px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .footer__column ul {
@@ -89,18 +164,58 @@
     padding: 0;
 }
 
+.footer__column ul li {
+    margin-bottom: 6px;
+}
+
 .footer__column ul li a {
-    color: #000;
     text-decoration: none;
-    font-size: 14px;
+    color: #333;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+.footer__column ul li a i {
+    margin-right: 6px;
+    color: #81c240;
 }
 
 .footer__column ul li a:hover {
-    color: #666;
+    color: #81c240;
 }
 
-.footer__social {
-    margin-top: 20px;
+.footer__column p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.footer__column p i {
+    margin-right: 6px;
+    color: #2c3e50;
+}
+
+.footer__bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.footer__bottom p {
     font-size: 14px;
+    background-color: #16304a;
+    color: #fff;
+    padding: 10px;
+}
+
+.footer__social a {
+    margin: 0 8px;
+    font-size: 18px;
+    color: #2c3e50;
+    transition: color 0.3s;
+}
+
+.footer__social a:hover {
+    color: #16304a;
 }
 </style>

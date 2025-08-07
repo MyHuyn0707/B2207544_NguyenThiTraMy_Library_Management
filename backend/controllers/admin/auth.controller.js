@@ -9,7 +9,7 @@ module.exports.loginPost = async (req, res, next) => {
         const enteredPassword = req.body.password;
 
         const user = await Account.findOne({ email: enteredEmail });
-
+        console.log(user);
         if (!user) {
             res.json("wrong info");
             return;

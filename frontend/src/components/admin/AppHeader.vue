@@ -66,7 +66,7 @@ export default {
 
 <style scoped>
 .navbar {
-    background-color: #c6f0a1;
+    background-color: #2b6094;
     height: 80px;
 }
 
